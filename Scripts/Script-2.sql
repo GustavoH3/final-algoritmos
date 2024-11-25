@@ -1,0 +1,1 @@
+create table PESSOA(teste1 int);
