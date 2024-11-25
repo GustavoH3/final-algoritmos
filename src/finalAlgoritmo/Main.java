@@ -3,8 +3,8 @@ package finalAlgoritmo;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Pessoa joao = new Pessoa();
+        System.out.println("ID do usuário: " + joao.getId());
 	}
-
 }
+
