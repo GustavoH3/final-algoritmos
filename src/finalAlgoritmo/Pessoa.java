@@ -15,12 +15,20 @@ public abstract class Pessoa {
 		this.cidade = cidade;
 	}
 	
-	public UUID getID(){
+	public UUID getId(){
 		return this.id;
 	}
 	
 	public String getNome(){
 		return this.nome;
+	}
+	
+	public String getCPF(){
+		return this.CPF;
+	}
+	
+	public String getCidade(){
+		return this.cidade;
 	}
 }
 

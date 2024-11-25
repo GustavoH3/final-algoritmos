@@ -9,6 +9,6 @@ public class Cliente extends Pessoa {
 	}
 	
 	public UUID getId(){
-		return super.getID();
+		return super.getId();
 	}
 }

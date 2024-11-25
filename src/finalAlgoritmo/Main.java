@@ -3,7 +3,8 @@ package finalAlgoritmo;
 public class Main {
 
 	public static void main(String[] args) {
-		 Motorista joão = new Motorista(1234568789, "joao", "chapeco", "135.548.965-89");
+		 Motorista joão = new Motorista(123, "joao", "chapeco", "135.548.965-89");
+		 joão.salvar();
 	        
 	        System.out.println("ID da pessoa: " + joão.getId());
 	        
