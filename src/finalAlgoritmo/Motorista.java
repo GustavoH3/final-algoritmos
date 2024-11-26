@@ -1,5 +1,7 @@
 package finalAlgoritmo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.sql.*;
 
@@ -11,6 +13,13 @@ public class Motorista extends Pessoa {
 		super(nome, CPF, cidade);
 		this.CNH = CNH;
 		this.status = false;
+	}
+	
+	public Motorista(Integer CNH, String nome, String cidade, String CPF, UUID ID, Boolean status) {
+		super(nome, CPF, cidade);
+		this.CNH = CNH;
+		this.status = status;
+		setID(ID);
 	}
 	
 	public UUID getId(){
@@ -46,5 +55,40 @@ public class Motorista extends Pessoa {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+	
+	public List<Motorista> listarMotoristas() {
+        String sql = "SELECT * FROM pessoa";
+        List<Motorista> clientes = new ArrayList<>();
+
+        try (Connection conn = conexaoBanco.getConexao(); 
+             Statement stmt = conn.createStatement(); 
+             ResultSet resultado = stmt.executeQuery(sql)) {
+
+            while (resultado.next()) {
+            	UUID id = UUID.fromString(resultado.getString("id"));
+                String nome = resultado.getString("nome");
+                String cidade = resultado.getString("cidade");
+                String CPF = resultado.getString("cpf");
+                Boolean status = resultado.getBoolean("status");
+                Integer CNH = resultado.getInt("cnh");
+                clientes.add(new Motorista(CNH, nome, cidade, CPF, id, status));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar clientes: " + e.getMessage());
+        }
+        return clientes;
+    }
+	
+	@Override
+    public String toString() {
+        return "Motorista{" +
+                "id=" + getId() +
+                ", nome='" + getNome() + '\'' +
+                ", cidade='" + getCidade() + '\'' +
+                ", cpf='" + getCPF() + '\'' +
+                ", status='" + this.status + '\'' +
+                ", CNH'" + this.CNH + '\'' +
+                '}';
     }
 }

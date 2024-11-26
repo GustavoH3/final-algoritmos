@@ -30,5 +30,9 @@ public abstract class Pessoa {
 	public String getCidade(){
 		return this.cidade;
 	}
+	
+	public void setID(UUID id) {
+		this.id = id;
+	}
 }
 

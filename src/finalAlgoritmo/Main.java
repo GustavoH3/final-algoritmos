@@ -4,7 +4,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		 Motorista joão = new Motorista(123, "joao", "chapeco", "135.548.965-89");
-		 joão.salvar();
+		 
+		 for (Motorista motorista : joão.listarMotoristas()) {
+	            System.out.println(motorista);
+	        }
 	        
 	        System.out.println("ID da pessoa: " + joão.getId());
 	        
