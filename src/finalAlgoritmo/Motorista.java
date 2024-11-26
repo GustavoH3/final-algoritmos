@@ -80,6 +80,120 @@ public class Motorista extends Pessoa {
         return clientes;
     }
 	
+	public boolean atualizarMotoristaNome(String nome, String novoNome, String novaCidade, Integer novaCNH, String novoCPF) {
+        String sql = "UPDATE pessoa SET nome = ?, cidade = ?, cnh = ?, cpf = ? WHERE nome = ?";
+        boolean atualizado = false; 
+
+        try (Connection conn = conexaoBanco.getConexao(); 
+             PreparedStatement stmt = conn.prepareStatement(sql)) { 
+
+            stmt.setString(1, novoNome);  
+            stmt.setString(2, novaCidade);
+            stmt.setInt(3, novaCNH);
+            stmt.setString(4, novoCPF);
+            stmt.setString(5, nome); 
+
+            int linhasAfetadas = stmt.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                atualizado = true; 
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar cliente: " + e.getMessage());
+        }
+
+        return atualizado;
+    }
+	
+	public boolean atualizarMotoristaID(UUID id, String novoNome, String novaCidade, Integer novaCNH, String novoCPF) {
+        String sql = "UPDATE pessoa SET nome = ?, cidade = ?, cnh = ?, cpf = ? WHERE id = ?";  
+        boolean atualizado = false; 
+
+        try (Connection conn = conexaoBanco.getConexao(); 
+             PreparedStatement stmt = conn.prepareStatement(sql)) { 
+
+            stmt.setString(1, novoNome);  
+            stmt.setString(2, novaCidade);
+            stmt.setInt(3, novaCNH);
+            stmt.setString(4, novoCPF);
+            stmt.setObject(5, id); 
+
+            int linhasAfetadas = stmt.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                atualizado = true; 
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar cliente: " + e.getMessage());
+        }
+
+        return atualizado;
+    }
+	
+	public boolean DeletarMotoristaID(UUID id) {
+		String sql = "DELETE FROM pessoa WHERE id = ?";
+		PreparedStatement stmt = null;
+		Connection conn = null;
+		boolean isDeleted = false;
+
+		try {conn = conexaoBanco.getConexao();
+
+		    stmt = conn.prepareStatement(sql);
+            stmt.setObject(1, id);  
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                isDeleted = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return isDeleted;
+    }
+	
+	public boolean DeletarMotoristaNome(String nome) {
+		String sql = "DELETE FROM pessoa WHERE id = ?";
+		PreparedStatement stmt = null;
+		Connection conn = null;
+		boolean isDeleted = false;
+
+		try {conn = conexaoBanco.getConexao();
+
+		    stmt = conn.prepareStatement(sql);
+            stmt.setString(1, nome);  
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                isDeleted = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return isDeleted;
+    }
+	
 	@Override
     public String toString() {
         return "Motorista{" +
