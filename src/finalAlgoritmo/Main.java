@@ -38,6 +38,6 @@ public class Main {
 	        viagem.exibirProdutos();
 	        viagem.getCliente();
 	        viagem.getMotorista();
-	        joão.DeletarMotorista(motorista.getId());
+	        joão.DeletarMotoristaID(motorista.getId());
 	}
 }
