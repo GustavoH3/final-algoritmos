@@ -15,15 +15,14 @@ public class Main {
 	            motorista.setID(motorista1.getId());
 	        }
 	        
-		 System.out.println(motorista.getId().toString());
 	        System.out.println("ID da pessoa: " + joão.getId());
 	        
 	        Cliente maria = new Cliente(1234568789, "maria", "chapeco", "935.748.965-59");
 	        
 	        System.out.println("ID da pessoa: " + maria.getId());
 	        
-	        joão.atualizarMotoristaID(motorista.getId(), "Rogerio", "Xaxim", 12365489, "123.698.874-78");
-	        motorista.atualizarMotoristaNome("Rogerio", "Fernando", "Xanxere", 45874123, "123.456.789-12");
+	       // joão.atualizarMotoristaID(motorista.getId(), "Rogerio", "Xaxim", 12365489, "123.698.874-78");
+	       // motorista.atualizarMotoristaNome("Rogerio", "Fernando", "Xanxere", 45874123, "123.456.789-12");
 	        
 	        Produto produto1 = new Produto("Câmera Fotográfica", 5);
 	        Produto produto2 = new Produto("Carregador Solar", 3);
@@ -38,6 +37,5 @@ public class Main {
 	        viagem.exibirProdutos();
 	        viagem.getCliente();
 	        viagem.getMotorista();
-	        joão.DeletarMotoristaID(motorista.getId());
 	}
 }
