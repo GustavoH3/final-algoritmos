@@ -9,6 +9,11 @@ public class Motorista extends Pessoa {
 	private Integer CNH;
 	private Boolean status;
 	
+	public Motorista(String nome) { 
+		super(nome, null, null);
+		this.status = false;
+	}
+	
 	public Motorista(Integer CNH, String nome, String cidade, String CPF) {
 		super(nome, CPF, cidade);
 		this.CNH = CNH;

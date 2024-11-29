@@ -11,6 +11,10 @@ import java.util.UUID;
 
 public class Cliente extends Pessoa {
 	
+	 public Cliente(String nome) { 
+		 	super(nome, null, null); 
+	 }
+	
 	 public Cliente(String nome, String CPF, String cidade) {
 	        super(nome, CPF, cidade); 
 	 }
