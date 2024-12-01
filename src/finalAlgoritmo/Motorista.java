@@ -35,7 +35,7 @@ public class Motorista extends Pessoa {
 	}
 	
 	public void salvar() {
-        String sql = "INSERT INTO Pessoa(nome, cidade, cpf, status, cnh, id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO motorista(nome, cidade, cpf, status, cnh, id) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = conexaoBanco.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -58,7 +58,7 @@ public class Motorista extends Pessoa {
     }
 	
 	public List<Motorista> listarMotoristas() {
-        String sql = "SELECT * FROM pessoa";
+        String sql = "SELECT * FROM motorista";
         List<Motorista> clientes = new ArrayList<>();
 
         try (Connection conn = conexaoBanco.getConexao(); 
@@ -81,7 +81,7 @@ public class Motorista extends Pessoa {
     }
 	
 	public boolean atualizarMotoristaNome(String nome, String novoNome, String novaCidade, Integer novaCNH, String novoCPF) {
-        String sql = "UPDATE pessoa SET nome = ?, cidade = ?, cnh = ?, cpf = ? WHERE nome = ?";
+        String sql = "UPDATE motorista SET nome = ?, cidade = ?, cnh = ?, cpf = ? WHERE nome = ?";
         boolean atualizado = false; 
 
         try (Connection conn = conexaoBanco.getConexao(); 
@@ -106,7 +106,7 @@ public class Motorista extends Pessoa {
     }
 	
 	public boolean atualizarMotoristaID(UUID id, String novoNome, String novaCidade, Integer novaCNH, String novoCPF) {
-        String sql = "UPDATE pessoa SET nome = ?, cidade = ?, cnh = ?, cpf = ? WHERE id = ?";  
+        String sql = "UPDATE motorista SET nome = ?, cidade = ?, cnh = ?, cpf = ? WHERE id = ?";  
         boolean atualizado = false; 
 
         try (Connection conn = conexaoBanco.getConexao(); 
@@ -131,7 +131,7 @@ public class Motorista extends Pessoa {
     }
 	
 	public boolean DeletarMotoristaID(UUID id) {
-		String sql = "DELETE FROM pessoa WHERE id = ?";
+		String sql = "DELETE FROM motorista WHERE id = ?";
 		PreparedStatement stmt = null;
 		Connection conn = null;
 		boolean isDeleted = false;

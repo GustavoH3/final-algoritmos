@@ -8,7 +8,9 @@ public class Main {
 	public static void main(String[] args) {
 		 Motorista joão = new Motorista(123, "joao", "chapeco", "135.548.965-89");
 		 Motorista motorista = null;
-		 
+		 joão.listarMotoristas();
+		 joão.atualizarMotoristaNome("joao", "Roger", "Acapuco", 456987456, "135-569-25-89");
+		 joão.listarMotoristas();		 
 		 for (Motorista motorista1 : joão.listarMotoristas()) {
 	            System.out.println(motorista1);
 	            motorista = new Motorista(1234, "cesar", "chate", "123;456");
