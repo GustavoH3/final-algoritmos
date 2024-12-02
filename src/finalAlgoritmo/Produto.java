@@ -87,6 +87,29 @@ public class Produto {
 
         return atualizado;
     }
+    public boolean atualizarProdutoNome(String novoNome, String nome, Integer novaQuantidade) {
+        String sql = "UPDATE Produto SET nome = ?, quantidade = ? WHERE nome = ?";
+        boolean atualizado = false;
+
+        try (Connection conn = conexaoBanco.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, novoNome);
+            stmt.setInt(2, novaQuantidade);
+            stmt.setObject(3, nome);
+
+            int linhasAfetadas = stmt.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                atualizado = true;
+                System.out.println("Produto atualizado com sucesso.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar produto: " + e.getMessage());
+        }
+
+        return atualizado;
+    }
 
     public boolean deletarProduto(UUID id) {
         String sql = "DELETE FROM Produto WHERE id = ?";
@@ -109,6 +132,28 @@ public class Produto {
 
         return isDeleted;
     }
+    public boolean deletarProdutoNome(String nome) {
+        String sql = "DELETE FROM Produto WHERE nome = ?";
+        boolean isDeleted = false;
+
+        try (Connection conn = conexaoBanco.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setObject(1, nome);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                isDeleted = true;
+                System.out.println("Produto deletado com sucesso.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao deletar produto: " + e.getMessage());
+        }
+
+        return isDeleted;
+    }
+
 
     public boolean deletarProdutoPorNome(String nome) {
         String sql = "DELETE FROM Produto WHERE nome = ?";
