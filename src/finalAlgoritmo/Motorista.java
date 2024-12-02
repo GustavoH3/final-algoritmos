@@ -209,5 +209,5 @@ public class Motorista extends Pessoa {
                 ", status= " + this.status +
                 ", CNH " + this.CNH +
                 '}';
-    }
+    } 
 }
