@@ -9,6 +9,8 @@ public class Main {
 		
 				//Variáveis para controle dos Menus
 				Integer menuPrincipal = 0, subMenu = 0, opcaoSubMenu = 0;
+				Boolean sairOperacao = false;
+				
 				//Ativação do modo Debug
 				Boolean iniciarDebug = false;
 				
@@ -29,16 +31,40 @@ public class Main {
 											System.out.println("Listar Clientes");
 											break;
 										case 2:
-											System.out.println("cadastrar Clientes");
+											System.out.println("\nCadastrar Clientes");
+											do{
+												sairOperacao = false;
+												System.out.print("Insira o Nome do Cliente:");
+												String nomeCliente = Menus.inputUsuarioString();
+												System.out.print("Insira o CPF do Cliente:");
+												String cpfCliente = Menus.inputUsuarioString();
+												System.out.print("Insira a Cidade do Cliente:");
+												String cidadeCliente = Menus.inputUsuarioString();
+												Cliente clienteMenu = new Cliente(nomeCliente, cpfCliente, cidadeCliente);
+												System.out.println("\nDados do Cliente:");
+												System.out.println(clienteMenu.toString());
+												System.out.println("\nDeseja salvar esse Cliente?");
+												System.out.println("1 - Salvar \n2 - Não Salvar");
+												if(Menus.inputUsuarioNumero() == 1){
+													System.out.println("Cliente Salvo no Banco de Dados");
+													//clienteMenu.salvarCliente();
+													sairOperacao = true;
+												}else{
+													System.out.println("Cliente descartado");
+													sairOperacao = true;
+												}
+											}while(sairOperacao == false);
 											break;
 										case 3:
-											System.out.println("editar Clientes");
+											System.out.println("Editar Clientes");
+											
 											break;
 										case 4: 
 											System.out.println("remover Clientes");
+											
 											break;
 										case 5:
-											System.out.println("está voltando pra o menu anterior");
+											System.out.println("Você está voltando pra o menu anterior");
 											break;		
 									}
 								}while(subMenu != 5);
@@ -55,9 +81,34 @@ public class Main {
 									switch(subMenu){
 										case 1:
 											System.out.println("Listar Motoristas");
+											
 											break;
 										case 2:
-											System.out.println("cadastrar Motoristas");
+											System.out.println("Cadastrar Motoristas");
+											do{
+												sairOperacao = false;
+												System.out.print("Insira a CNH do Motorista:");
+												Integer cnhMotorista = Menus.inputUsuarioNumero();
+												System.out.print("Insira o Nome do Motorista:");
+												String nomeMotorista = Menus.inputUsuarioString();
+												System.out.print("Insira o CPF do Motorista:");
+												String cpfMotorista = Menus.inputUsuarioString();
+												System.out.print("Insira a Cidade do Motorista:");
+												String cidadeMotorista = Menus.inputUsuarioString();
+												Motorista motoristaMenu = new Motorista(cnhMotorista, nomeMotorista, cidadeMotorista, cpfMotorista);
+												System.out.println("\nDados do Motorista:");
+												System.out.println(motoristaMenu.toString());
+												System.out.println("\nDeseja salvar esse Motorista?");
+												System.out.println("1 - Salvar \n2 - Não Salvar");
+												if(Menus.inputUsuarioNumero() == 1){
+													System.out.println("Motorista Salvo no Banco de Dados");
+													//motoristaMenu.salvar();
+													sairOperacao = true;
+												}else{
+													System.out.println("Motorista descartado");
+													sairOperacao = true;
+												}
+											}while(sairOperacao == false);
 											break;
 										case 3:
 											System.out.println("editar Motoristas");
@@ -66,7 +117,7 @@ public class Main {
 											System.out.println("remover Motoristas");
 											break;
 										case 5:
-											System.out.println("está voltando pra o menu anterior");
+											System.out.println("Você está voltando pra o menu anterior");
 											break;		
 									}
 								}while(subMenu != 5);
@@ -82,19 +133,39 @@ public class Main {
 									//Seleção das opções do SubMenu
 									switch(subMenu){
 										case 1:
-											System.out.println("Listar Motoristas");
+											System.out.println("Listar Produtos");
 											break;
 										case 2:
-											System.out.println("cadastrar Motoristas");
+											System.out.println("Cadastrar Produtos");
+											do{
+												sairOperacao = false;
+												System.out.print("Insira o Nome do Produto:");
+												String nomeProduto = Menus.inputUsuarioString();
+												System.out.print("Insira a quantidade do Produto:");
+												Integer qtdProduto = Menus.inputUsuarioNumero();
+												Produto produtoMenu = new Produto(nomeProduto, qtdProduto);
+												System.out.println("\nDados do Produto:");
+												System.out.println(produtoMenu.toString());
+												System.out.println("\nDeseja salvar esse Produto?");
+												System.out.println("1 - Salvar \n2 - Não Salvar");
+												if(Menus.inputUsuarioNumero() == 1){
+													System.out.println("Produto Salvo no Banco de Dados");
+													//produtoMenu.salvar();
+													sairOperacao = true;
+												}else{
+													System.out.println("Produto descartado");
+													sairOperacao = true;
+												}
+											}while(sairOperacao == false);
 											break;
 										case 3:
-											System.out.println("editar Motoristas");
+											System.out.println("Editar Produtos");
 											break;
 										case 4: 
-											System.out.println("remover Motoristas");
+											System.out.println("Remover Produtos");
 											break;
 										case 5:
-											System.out.println("está voltando pra o menu anterior");
+											System.out.println("Você está voltando pra o menu anterior");
 											break;		
 									}
 								}while(subMenu != 5);
