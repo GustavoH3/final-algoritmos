@@ -180,11 +180,11 @@ public class Cliente extends Pessoa {
 	 
 	    @Override
 	    public String toString() {
-	        return "Cliente{" +
-	                "ID='" + getId() +
-	                ", Nome='" + getNome() +
-	                ", CPF='" + getCPF() + 
-	                ", Cidade='" + getCidade() +
+	        return "Cliente {" +
+	                "ID= " + getId() +
+	                ", Nome= " + getNome() +
+	                ", CPF= " + getCPF() + 
+	                ", Cidade= " + getCidade() +
 	                '}';
 	    }
 	}

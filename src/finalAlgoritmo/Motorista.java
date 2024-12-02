@@ -202,12 +202,12 @@ public class Motorista extends Pessoa {
 	@Override
     public String toString() {
         return "Motorista{" +
-                "id=" + getId() +
-                ", nome='" + getNome() + '\'' +
-                ", cidade='" + getCidade() + '\'' +
-                ", cpf='" + getCPF() + '\'' +
-                ", status='" + this.status + '\'' +
-                ", CNH'" + this.CNH + '\'' +
+                "ID= " + getId() +
+                ", Nome= " + getNome() +
+                ", cidade= " + getCidade() +
+                ", cpf= " + getCPF() +
+                ", status= " + this.status +
+                ", CNH " + this.CNH +
                 '}';
     } 
 }

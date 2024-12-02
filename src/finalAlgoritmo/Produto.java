@@ -20,22 +20,8 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 	
-	public Produto(String nome, Integer quantidade, UUID id){
-		this.id = id;
-		this.nome = nome;
-		this.quantidade = quantidade;
-	}
-	
 	public String getNome(){
 		return this.nome;
-	}
-	
-	public static List<Produto> asList(String[] produtosStringArray){
-		List<Produto> produtos = new ArrayList<>();
-		for(String nomeDoProduto : produtosStringArray) {
-			produtos.add(new Produto(nomeDoProduto, null));
-		}
-		return produtos;
 	}
 	
 	public void salvar() {
@@ -58,7 +44,7 @@ public class Produto {
         }
     }
 	
-	public List<Produto> listarProdutos() {
+	public static List<Produto> listarProdutos() {
         String sql = "SELECT * FROM Produto";
         List<Produto> produtos = new ArrayList<>();
 
@@ -70,7 +56,7 @@ public class Produto {
                 UUID id = UUID.fromString(resultado.getString("id"));
                 String nome = resultado.getString("nome");
                 int quantidade = resultado.getInt("quantidade");
-                produtos.add(new Produto(nome, quantidade, id));
+                produtos.add(new Produto(nome, quantidade));
             }
         } catch (SQLException e) {
             System.out.println("Erro ao listar produtos: " + e.getMessage());
@@ -78,7 +64,7 @@ public class Produto {
         return produtos;
     }
 	
-    public boolean atualizarProdutoId(UUID id, String novoNome, Integer novaQuantidade) {
+    public boolean atualizarProduto(UUID id, String novoNome, Integer novaQuantidade) {
         String sql = "UPDATE Produto SET nome = ?, quantidade = ? WHERE id = ?";
         boolean atualizado = false;
 
@@ -101,32 +87,8 @@ public class Produto {
 
         return atualizado;
     }
-    
-    public boolean atualizarProdutoNome(String nome, String novoNome, Integer novaQuantidade) {
-        String sql = "UPDATE Produto SET nome = ?, quantidade = ? WHERE nome = ?";
-        boolean atualizado = false;
 
-        try (Connection conn = conexaoBanco.getConexao();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, novoNome);
-            stmt.setInt(2, novaQuantidade);
-            stmt.setObject(3, nome);
-
-            int linhasAfetadas = stmt.executeUpdate();
-
-            if (linhasAfetadas > 0) {
-                atualizado = true;
-                System.out.println("Produto atualizado com sucesso.");
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro ao atualizar produto: " + e.getMessage());
-        }
-
-        return atualizado;
-    }
-
-    public boolean deletarProdutoId(UUID id) {
+    public boolean deletarProduto(UUID id) {
         String sql = "DELETE FROM Produto WHERE id = ?";
         boolean isDeleted = false;
 
@@ -172,10 +134,10 @@ public class Produto {
     
     @Override
     public String toString() {
-        return "Produto \n" +
-               "id= " + id +
-               ", nome= " + nome +
-               ", quantidade= " + quantidade + "\n"
-             ;
+        return "Produto{" +
+               "ID= " + id +
+               ", Nome= " + nome +
+               ", Quantidade= " + quantidade +
+               '}';
     }
 }
