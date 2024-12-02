@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/jdk-23/postgresql-42.7.4.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="lib" path="/home/gabriel-reis/Downloads/postgresql-42.7.4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-23.0.1-oracle-x64">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
