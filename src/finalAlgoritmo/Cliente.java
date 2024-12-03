@@ -66,7 +66,7 @@ public class Cliente extends Pessoa {
 	        return clientes;
 	    }
 		
-		public boolean atualizarClienteNome(String nome, String novoNome, String novaCidade, String novoCPF) {
+		public static boolean atualizarClienteNome(String nome, String novoNome, String novaCidade, String novoCPF) {
 	        String sql = "UPDATE cliente SET nome = ?, cidade = ?, cpf = ? WHERE nome = ?";
 	        boolean atualizado = false; 
 
@@ -90,7 +90,7 @@ public class Cliente extends Pessoa {
 	        return atualizado;
 	    }
 		
-		public boolean atualizarClienteID(UUID id, String novoNome, String novaCidade, String novoCPF) {
+		public static boolean atualizarClienteID(UUID id, String novoNome, String novaCidade, String novoCPF) {
 	        String sql = "UPDATE cliente SET nome = ?, cidade = ?, cpf = ? WHERE id = ?";  
 	        boolean atualizado = false; 
 

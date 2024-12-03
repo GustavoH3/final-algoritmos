@@ -118,7 +118,7 @@ public class Viagem {
                 String status = resultado.getString("status");
                 
                 String[] produtosStringArray = (String[]) produtosArray.getArray();
-                produtos = Produto.asList(produtosStringArray);
+                //produtos = Produto.asList(produtosStringArray);
                 
 
                 Viagem viagem = new Viagem(descricao, cidadeOrigem, cidadeDestino, new Motorista(motorista), new Cliente(cliente), produtos);

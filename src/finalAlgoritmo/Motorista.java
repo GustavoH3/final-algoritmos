@@ -85,7 +85,7 @@ public class Motorista extends Pessoa {
         return clientes;
     }
 	
-	public boolean atualizarMotoristaNome(String nome, String novoNome, String novaCidade, Integer novaCNH, String novoCPF) {
+	public static boolean atualizarMotoristaNome(String nome, String novoNome, String novaCidade, Integer novaCNH, String novoCPF) {
         String sql = "UPDATE motorista SET nome = ?, cidade = ?, cnh = ?, cpf = ? WHERE nome = ?";
         boolean atualizado = false; 
 
@@ -110,7 +110,7 @@ public class Motorista extends Pessoa {
         return atualizado;
     }
 	
-	public boolean atualizarMotoristaID(UUID id, String novoNome, String novaCidade, Integer novaCNH, String novoCPF) {
+	public static boolean atualizarMotoristaID(UUID id, String novoNome, String novaCidade, Integer novaCNH, String novoCPF) {
         String sql = "UPDATE motorista SET nome = ?, cidade = ?, cnh = ?, cpf = ? WHERE id = ?";  
         boolean atualizado = false; 
 

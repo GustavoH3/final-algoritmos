@@ -1,6 +1,8 @@
 package finalAlgoritmo;
 
 import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -28,7 +30,13 @@ public class Main {
 									//Seleção das opções do SubMenu
 									switch(subMenu){
 										case 1:
-											System.out.println("Listar Clientes");
+											System.out.println("Listando Clientes...");
+											Cliente clienteAux = new Cliente("varAuxMenu");
+											List<Cliente> clientesListarMenu = clienteAux.listarClientes();
+											System.out.println("Imprimindo Clientes");
+											for (Cliente clientesExibir : clientesListarMenu) {
+												System.out.println(clientesExibir.toString());
+											}
 											break;
 										case 2:
 											System.out.println("\nCadastrar Clientes");
@@ -57,11 +65,72 @@ public class Main {
 											break;
 										case 3:
 											System.out.println("Editar Clientes");
+											System.out.println("Editar por: \n1 - ID \n2 - Nome");
+											opcaoSubMenu = Menus.inputUsuarioNumero();
+											switch(opcaoSubMenu){
+												case 1:
+													//Atualizar por UUID
+													System.out.print("Digite o ID do Cliente:");
+													UUID clienteIdAntigo_1 = UUID.fromString(Menus.inputUsuarioString());
+													System.out.print("Digite o novo Nome do Cliente:");
+													String clienteNovoNome_1 = Menus.inputUsuarioString();
+													System.out.print("Digite a nova Cidade do Cliente:");
+													String clienteNovaCidade_1 = Menus.inputUsuarioString();
+													System.out.print("Digite o novo CPF do Cliente:");
+													String clienteNovoCPF_1 = Menus.inputUsuarioString();
+													Boolean deletouObjeto_1 = Cliente.atualizarClienteID(clienteIdAntigo_1, clienteNovoNome_1, clienteNovaCidade_1, clienteNovoCPF_1);
+													if(deletouObjeto_1 == true){
+														System.out.println("Cliente Alterado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Atualizar o Cliente");
+													}
+													break;
+												case 2:
+													System.out.print("Digite o Nome do Cliente:");
+													String clienteNomeAntigo_2 = Menus.inputUsuarioString();
+													System.out.print("Digite o novo Nome do Cliente:");
+													String clienteNovoNome_2 = Menus.inputUsuarioString();
+													System.out.print("Digite a nova Cidade do Cliente:");
+													String clienteNovaCidade_2 = Menus.inputUsuarioString();
+													System.out.print("Digite o novo CPF do Cliente:");
+													String clienteNovoCPF_2 = Menus.inputUsuarioString();
+													Boolean deletouObjeto_2 = Cliente.atualizarClienteNome(clienteNomeAntigo_2, clienteNovoNome_2, clienteNovaCidade_2, clienteNovoCPF_2);
+													if(deletouObjeto_2 == true){
+														System.out.println("Cliente Alterado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Atualizar o Cliente");
+													}
+													break;
+											}
 											
 											break;
 										case 4: 
-											System.out.println("remover Clientes");
-											
+											System.out.println("Remover Cliente");
+											System.out.println("Deletar por: \n1 - ID \n2 - Nome");
+											opcaoSubMenu = Menus.inputUsuarioNumero();
+											switch(opcaoSubMenu){
+												case 1:
+													//Deletar por UUID
+													System.out.print("Digite o ID do Cliente:");
+													Cliente clienteMenu_1 = new Cliente("varAux");
+													Boolean deletouObjeto_1 = clienteMenu_1.DeletarClienteID(UUID.fromString(Menus.inputUsuarioString()));
+													if(deletouObjeto_1 == true){
+														System.out.println("Cliente Deletado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Deletar o Cliente");
+													}
+													break;
+												case 2:
+													System.out.print("Digite o Nome do Cliente:");
+													Cliente clienteMenu_2 = new Cliente("varAux");
+													Boolean deletouObjeto_2 = clienteMenu_2.DeletarClienteNome(Menus.inputUsuarioString());
+													if(deletouObjeto_2 == true){
+														System.out.println("Cliente Deletado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Deletar o Cliente");
+													}
+													break;
+											}
 											break;
 										case 5:
 											System.out.println("Você está voltando pra o menu anterior");
@@ -80,7 +149,13 @@ public class Main {
 									//Seleção das opções do SubMenu
 									switch(subMenu){
 										case 1:
-											System.out.println("Listar Motoristas");
+											System.out.println("Listando Motoristas...");
+											Motorista motoristaAux = new Motorista("varAuxMenu");
+											List<Motorista> motoristasListarMenu = motoristaAux.listarMotoristas();
+											System.out.println("Imprimindo Motoristas");
+											for (Motorista motoristasExibir : motoristasListarMenu) {
+												System.out.println(motoristasExibir.toString());
+											}
 											break;
 										case 2:
 											System.out.println("Cadastrar Motoristas");
@@ -110,10 +185,77 @@ public class Main {
 											}while(sairOperacao == false);
 											break;
 										case 3:
-											System.out.println("editar Motoristas");
+											System.out.println("Editar Motoristas");
+											System.out.println("Editar por: \n1 - ID \n2 - Nome");
+											opcaoSubMenu = Menus.inputUsuarioNumero();
+											switch(opcaoSubMenu){
+												case 1:
+													//Atualizar por UUID
+													System.out.print("Digite o ID do Motorista:");
+													UUID motoristaIdAntigo_1 = UUID.fromString(Menus.inputUsuarioString());
+													System.out.print("Digite o novo Nome do Motorista:");
+													String motoristaNovoNome_1 = Menus.inputUsuarioString();
+													System.out.print("Digite a nova Cidade do Motorista:");
+													String motoristaNovaCidade_1 = Menus.inputUsuarioString();
+													System.out.print("Digite a nova CNH do Motorista:");
+													Integer motoristaNovaCNH_1 = Menus.inputUsuarioNumero();
+													System.out.print("Digite o novo CPF do Motorista:");
+													String motoristaNovoCPF_1 = Menus.inputUsuarioString();
+													Boolean deletouObjeto_1 = Motorista.atualizarMotoristaID(motoristaIdAntigo_1, motoristaNovoNome_1, motoristaNovaCidade_1, motoristaNovaCNH_1, motoristaNovoCPF_1);
+													if(deletouObjeto_1 == true){
+														System.out.println("Cliente Alterado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Atualizar o Cliente");
+													}
+													break;
+												case 2:
+													System.out.print("Digite o Nome do Motorista:");
+													String motoristaNomeAntigo_2 = Menus.inputUsuarioString();
+													System.out.print("Digite o novo Nome do Motorista:");
+													String motoristaNovoNome_2 = Menus.inputUsuarioString();
+													System.out.print("Digite a nova Cidade do Motorista:");
+													String motoristaNovaCidade_2 = Menus.inputUsuarioString();
+													System.out.print("Digite a nova CNH do Motorista:");
+													Integer motoristaNovaCNH_2 = Menus.inputUsuarioNumero();
+													System.out.print("Digite o novo CPF do Motorista:");
+													String motoristaNovoCPF_2 = Menus.inputUsuarioString();
+													Boolean deletouObjeto_2 = Motorista.atualizarMotoristaNome(motoristaNomeAntigo_2, motoristaNovoNome_2, motoristaNovaCidade_2, motoristaNovaCNH_2, motoristaNovoCPF_2);
+													if(deletouObjeto_2 == true){
+														System.out.println("Cliente Alterado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Atualizar o Cliente");
+													}
+													break;
+											}
+											
 											break;
 										case 4: 
-											System.out.println("remover Motoristas");
+											System.out.println("Remover Motorista");
+											System.out.println("Deletar por: \n1 - ID \n2 - Nome");
+											opcaoSubMenu = Menus.inputUsuarioNumero();
+											switch(opcaoSubMenu){
+												case 1:
+													//Deletar por UUID
+													System.out.print("Digite o ID do Motorista:");
+													Motorista motoristaMenu_1 = new Motorista("varAux");
+													Boolean deletouObjeto_1 = motoristaMenu_1.DeletarMotoristaID(UUID.fromString(Menus.inputUsuarioString()));
+													if(deletouObjeto_1 == true){
+														System.out.println("Motorista Deletado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Deletar o Motorista");
+													}
+													break;
+												case 2:
+													System.out.print("Digite o Nome do Motorista:");
+													Motorista motoristaMenu_2 = new Motorista("varAux");
+													Boolean deletouObjeto_2 = motoristaMenu_2.DeletarMotoristaNome(Menus.inputUsuarioString());
+													if(deletouObjeto_2 == true){
+														System.out.println("Motorista Deletado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Deletar o Motorista");
+													}
+													break;
+											}
 											break;
 										case 5:
 											System.out.println("Você está voltando pra o menu anterior");
@@ -132,7 +274,12 @@ public class Main {
 									//Seleção das opções do SubMenu
 									switch(subMenu){
 										case 1:
-											System.out.println("Listar Produtos");
+											System.out.println("Listando Produtos...");
+											List<Produto> produtosListarMenu = Produto.listarProdutos();
+											System.out.println("Imprimindo Motoristas");
+											for (Produto produtosExibir : produtosListarMenu) {
+												System.out.println(produtosExibir.toString());
+											}
 											break;
 										case 2:
 											System.out.println("Cadastrar Produtos");
@@ -159,9 +306,68 @@ public class Main {
 											break;
 										case 3:
 											System.out.println("Editar Produtos");
+											System.out.println("Editar por: \n1 - ID \n2 - Nome");
+											opcaoSubMenu = Menus.inputUsuarioNumero();
+											switch(opcaoSubMenu){
+												case 1:
+													//Atualizar por UUID
+													System.out.print("Digite o ID do Produto:");
+													UUID produtoIdAntigo_1 = UUID.fromString(Menus.inputUsuarioString());
+													System.out.print("Digite o novo Nome do Produto:");
+													String produtoNovoNome_1 = Menus.inputUsuarioString();
+													System.out.print("Digite a nova quantidade do Produto:");
+													Integer produtoNovaQTD_1 = Menus.inputUsuarioNumero();
+													Boolean deletouObjeto_1 = Produto.atualizarProdutoID(produtoIdAntigo_1, produtoNovoNome_1, produtoNovaQTD_1);
+													if(deletouObjeto_1 == true){
+														System.out.println("Produto Alterado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Atualizar o Produto");
+													}
+													break;
+												case 2:
+													System.out.print("Digite o Nome do Produto:");
+													String produtoNomeAntigo_2 = Menus.inputUsuarioString();
+													System.out.print("Digite o novo Nome do Produto:");
+													String produtoNovoNome_2 = Menus.inputUsuarioString();
+													System.out.print("Digite a nova Quantidade do Produto:");
+													Integer produtoNovaQTD_2 = Menus.inputUsuarioNumero();
+													Boolean deletouObjeto_2 = Produto.atualizarProdutoNome(produtoNomeAntigo_2, produtoNovoNome_2, produtoNovaQTD_2);
+													if(deletouObjeto_2 == true){
+														System.out.println("Cliente Alterado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Atualizar o Cliente");
+													}
+													break;
+											}
+											
 											break;
 										case 4: 
-											System.out.println("Remover Produtos");
+											System.out.println("Remover Produto");
+											System.out.println("Deletar por: \n1 - ID \n2 - Nome");
+											opcaoSubMenu = Menus.inputUsuarioNumero();
+											switch(opcaoSubMenu){
+												case 1:
+													//Deletar por UUID
+													System.out.print("Digite o ID do Produto:");
+													Produto produtoMenu_1 = new Produto("varAux", 1234);
+													Boolean deletouObjeto_1 = produtoMenu_1.deletarProduto(UUID.fromString(Menus.inputUsuarioString()));
+													if(deletouObjeto_1 == true){
+														System.out.println("Produto Deletado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Deletar o Produto");
+													}
+													break;
+												case 2:
+													System.out.print("Digite o Nome do Produto:");
+													Produto produtoMenu_2 = new Produto("varAux", 1234);
+													Boolean deletouObjeto_2 = produtoMenu_2.deletarProdutoNome(Menus.inputUsuarioString());
+													if(deletouObjeto_2 == true){
+														System.out.println("Produto Deletado Com sucesso!");
+													}else {
+														System.out.println("Erro ao Deletar o Produto");
+													}
+													break;
+											}
 											break;
 										case 5:
 											System.out.println("Você está voltando pra o menu anterior");

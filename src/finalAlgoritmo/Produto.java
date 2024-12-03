@@ -64,7 +64,7 @@ public class Produto {
         return produtos;
     }
 	
-    public boolean atualizarProduto(UUID id, String novoNome, Integer novaQuantidade) {
+    public static boolean atualizarProdutoID(UUID id, String novoNome, Integer novaQuantidade) {
         String sql = "UPDATE Produto SET nome = ?, quantidade = ? WHERE id = ?";
         boolean atualizado = false;
 
@@ -87,7 +87,7 @@ public class Produto {
 
         return atualizado;
     }
-    public boolean atualizarProdutoNome(String novoNome, String nome, Integer novaQuantidade) {
+    public static boolean atualizarProdutoNome(String novoNome, String nome, Integer novaQuantidade) {
         String sql = "UPDATE Produto SET nome = ?, quantidade = ? WHERE nome = ?";
         boolean atualizado = false;
 
